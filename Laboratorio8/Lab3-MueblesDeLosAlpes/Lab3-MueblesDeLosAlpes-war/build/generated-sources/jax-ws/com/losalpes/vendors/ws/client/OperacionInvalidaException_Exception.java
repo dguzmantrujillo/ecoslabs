@@ -23,8 +23,8 @@ public class OperacionInvalidaException_Exception
 
     /**
      * 
-     * @param message
      * @param faultInfo
+     * @param message
      */
     public OperacionInvalidaException_Exception(String message, OperacionInvalidaException faultInfo) {
         super(message);
@@ -33,9 +33,9 @@ public class OperacionInvalidaException_Exception
 
     /**
      * 
-     * @param message
      * @param faultInfo
      * @param cause
+     * @param message
      */
     public OperacionInvalidaException_Exception(String message, OperacionInvalidaException faultInfo, Throwable cause) {
         super(message, cause);
