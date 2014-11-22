@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<catalog xmlns="urn:oasis:names:tc:entity:xmlns:xml:catalog" prefer="system">
+    <system systemId="http://localhost:8080/Lab3-MueblesDeLosAlpes-war/VendorWebService?wsdl" uri="wsdl/localhost_8080/Lab3-MueblesDeLosAlpes-war/VendorWebService.wsdl"/>
+    <system systemId="http://localhost:8080/Lab3-MueblesDeLosAlpes-war/VendorWebService?xsd=1" uri="wsdl/localhost_8080/Lab3-MueblesDeLosAlpes-war/VendorWebService.xsd_1.xsd"/>
+    <system systemId="http://localhost:8080/Lab3-MueblesDeLosAlpes-war/MuebleWebService?wsdl" uri="wsdl/localhost_8080/Lab3-MueblesDeLosAlpes-war/MuebleWebService.wsdl"/>
+    <system systemId="http://localhost:8080/Lab3-MueblesDeLosAlpes-war/MuebleWebService?xsd=1" uri="wsdl/localhost_8080/Lab3-MueblesDeLosAlpes-war/MuebleWebService.xsd_1.xsd"/>
+</catalog>

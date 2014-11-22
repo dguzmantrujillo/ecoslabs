@@ -1,0 +1,171 @@
+<?xml version='1.0' encoding='UTF-8'?><!-- Published by JAX-WS RI at http://jax-ws.dev.java.net. RI's version is Metro/2.2.0-1 (tags/2.2.0u1-7139; 2012-06-02T10:55:19+0000) JAXWS-RI/2.2.6-2 JAXWS/2.2 svn-revision#unknown. --><xs:schema xmlns:tns="http://ws.muebles.losalpes.com/" xmlns:xs="http://www.w3.org/2001/XMLSchema" version="1.0" targetNamespace="http://ws.muebles.losalpes.com/">
+
+<xs:element name="agregarItem" type="tns:agregarItem"/>
+
+<xs:element name="comprar" type="tns:comprar"/>
+
+<xs:element name="getInventario" type="tns:getInventario"/>
+
+<xs:element name="getInventarioResponse" type="tns:getInventarioResponse"/>
+
+<xs:element name="getPrecioTotalInventario" type="tns:getPrecioTotalInventario"/>
+
+<xs:element name="getPrecioTotalInventarioResponse" type="tns:getPrecioTotalInventarioResponse"/>
+
+<xs:element name="getTotalUnidades" type="tns:getTotalUnidades"/>
+
+<xs:element name="getTotalUnidadesResponse" type="tns:getTotalUnidadesResponse"/>
+
+<xs:element name="limpiarLista" type="tns:limpiarLista"/>
+
+<xs:element name="recalcularInventarioTotal" type="tns:recalcularInventarioTotal"/>
+
+<xs:element name="removerItem" type="tns:removerItem"/>
+
+<xs:element name="setInventario" type="tns:setInventario"/>
+
+<xs:complexType name="getInventario">
+<xs:sequence/>
+</xs:complexType>
+
+<xs:complexType name="getInventarioResponse">
+<xs:sequence>
+<xs:element name="return" type="tns:mueble" minOccurs="0" maxOccurs="unbounded"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="mueble">
+<xs:sequence>
+<xs:element name="cantidad" type="xs:int"/>
+<xs:element name="descripcion" type="xs:string" minOccurs="0"/>
+<xs:element name="imagen" type="xs:string" minOccurs="0"/>
+<xs:element name="nombre" type="xs:string" minOccurs="0"/>
+<xs:element name="precio" type="xs:double"/>
+<xs:element name="referencia" type="xs:long"/>
+<xs:element name="seleccion" type="xs:boolean"/>
+<xs:element name="tipo" type="tns:tipoMueble" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="getPrecioTotalInventario">
+<xs:sequence/>
+</xs:complexType>
+
+<xs:complexType name="getPrecioTotalInventarioResponse">
+<xs:sequence>
+<xs:element name="return" type="xs:double"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="getTotalUnidades">
+<xs:sequence/>
+</xs:complexType>
+
+<xs:complexType name="getTotalUnidadesResponse">
+<xs:sequence>
+<xs:element name="return" type="xs:int"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="agregarItem">
+<xs:sequence>
+<xs:element name="mueble" type="tns:mueble" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="recalcularInventarioTotal">
+<xs:sequence/>
+</xs:complexType>
+
+<xs:complexType name="removerItem">
+<xs:sequence>
+<xs:element name="mueble" type="tns:mueble" minOccurs="0"/>
+<xs:element name="removerCero" type="xs:boolean"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="comprar">
+<xs:sequence>
+<xs:element name="usuario" type="tns:usuario" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="usuario">
+<xs:sequence>
+<xs:element name="ciudad" type="tns:ciudad" minOccurs="0"/>
+<xs:element name="compras" type="tns:registroVenta" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+<xs:element name="contraseña" type="xs:string" minOccurs="0"/>
+<xs:element name="correo" type="xs:string" minOccurs="0"/>
+<xs:element name="direccion" type="xs:string" minOccurs="0"/>
+<xs:element name="documento" type="xs:long"/>
+<xs:element name="login" type="xs:string" minOccurs="0"/>
+<xs:element name="nombreCompleto" type="xs:string" minOccurs="0"/>
+<xs:element name="profesion" type="tns:profesion" minOccurs="0"/>
+<xs:element name="seleccion" type="xs:boolean"/>
+<xs:element name="telefonoCelular" type="xs:long"/>
+<xs:element name="telefonoLocal" type="xs:long"/>
+<xs:element name="tipoDocumento" type="tns:tipoDocumento" minOccurs="0"/>
+<xs:element name="tipoUsuario" type="tns:tipoUsuario" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="ciudad">
+<xs:sequence>
+<xs:element name="nombre" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="registroVenta">
+<xs:sequence>
+<xs:element name="cantidad" type="xs:int"/>
+<xs:element name="ciudad" type="xs:string" minOccurs="0"/>
+<xs:element name="comprador" type="tns:usuario" minOccurs="0"/>
+<xs:element name="fechaVenta" type="xs:dateTime" minOccurs="0"/>
+<xs:element name="producto" type="tns:mueble" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="limpiarLista">
+<xs:sequence/>
+</xs:complexType>
+
+<xs:complexType name="setInventario">
+<xs:sequence>
+<xs:element name="inventario" type="tns:mueble" minOccurs="0" maxOccurs="unbounded"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:simpleType name="tipoMueble">
+<xs:restriction base="xs:string">
+<xs:enumeration value="Interior"/>
+<xs:enumeration value="Exterior"/>
+</xs:restriction>
+</xs:simpleType>
+
+<xs:simpleType name="profesion">
+<xs:restriction base="xs:string">
+<xs:enumeration value="Abogado"/>
+<xs:enumeration value="Arquitecto"/>
+<xs:enumeration value="Administrador"/>
+<xs:enumeration value="Diseñador"/>
+<xs:enumeration value="Economista"/>
+<xs:enumeration value="Estudiante"/>
+<xs:enumeration value="Médico"/>
+<xs:enumeration value="Ingeniero"/>
+</xs:restriction>
+</xs:simpleType>
+
+<xs:simpleType name="tipoDocumento">
+<xs:restriction base="xs:string">
+<xs:enumeration value="CC"/>
+<xs:enumeration value="TarjetaIdentidad"/>
+</xs:restriction>
+</xs:simpleType>
+
+<xs:simpleType name="tipoUsuario">
+<xs:restriction base="xs:string">
+<xs:enumeration value="Administrador"/>
+<xs:enumeration value="Cliente"/>
+</xs:restriction>
+</xs:simpleType>
+</xs:schema>
