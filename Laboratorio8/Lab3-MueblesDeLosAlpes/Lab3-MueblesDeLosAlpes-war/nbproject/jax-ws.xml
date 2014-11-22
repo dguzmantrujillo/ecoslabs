@@ -4,6 +4,74 @@
     <service name="VendorWebService">
       <implementation-class>com.losalpes.vendors.ws.VendorWebService</implementation-class>
     </service>
+    <service name="MuebleWebService">
+      <implementation-class>com.losalpes.muebles.ws.MuebleWebService</implementation-class>
+    </service>
   </services>
-  <clients/>
+  <clients>
+    <client name="MuebleWebService">
+      <wsdl-url>http://localhost:8080/Lab3-MueblesDeLosAlpes-war/MuebleWebService?wsdl</wsdl-url>
+      <local-wsdl-file>localhost_8080/Lab3-MueblesDeLosAlpes-war/MuebleWebService.wsdl</local-wsdl-file>
+      <package-name forceReplace="true">com.losalpes.muebles.ws.client</package-name>
+      <catalog-file>catalog.xml</catalog-file>
+      <wsimport-options>
+        <wsimport-option>
+          <wsimport-option-name>extension</wsimport-option-name>
+          <wsimport-option-value>true</wsimport-option-value>
+        </wsimport-option>
+        <wsimport-option>
+          <wsimport-option-name>verbose</wsimport-option-name>
+          <wsimport-option-value>true</wsimport-option-value>
+        </wsimport-option>
+        <wsimport-option>
+          <wsimport-option-name>wsdlLocation</wsimport-option-name>
+          <wsimport-option-value>http://localhost:8080/Lab3-MueblesDeLosAlpes-war/MuebleWebService?wsdl</wsimport-option-value>
+        </wsimport-option>
+        <wsimport-option>
+          <wsimport-option-name>xnocompile</wsimport-option-name>
+          <wsimport-option-value>true</wsimport-option-value>
+        </wsimport-option>
+        <wsimport-option>
+          <wsimport-option-name>xendorsed</wsimport-option-name>
+          <wsimport-option-value>true</wsimport-option-value>
+        </wsimport-option>
+        <wsimport-option>
+          <wsimport-option-name>package</wsimport-option-name>
+          <wsimport-option-value>com.losalpes.muebles.ws.client</wsimport-option-value>
+        </wsimport-option>
+      </wsimport-options>
+    </client>
+    <client name="VendorWebService">
+      <wsdl-url>http://localhost:8080/Lab3-MueblesDeLosAlpes-war/VendorWebService?wsdl</wsdl-url>
+      <local-wsdl-file>localhost_8080/Lab3-MueblesDeLosAlpes-war/VendorWebService.wsdl</local-wsdl-file>
+      <package-name forceReplace="true">com.losalpes.vendors.ws.client</package-name>
+      <catalog-file>catalog.xml</catalog-file>
+      <wsimport-options>
+        <wsimport-option>
+          <wsimport-option-name>extension</wsimport-option-name>
+          <wsimport-option-value>true</wsimport-option-value>
+        </wsimport-option>
+        <wsimport-option>
+          <wsimport-option-name>verbose</wsimport-option-name>
+          <wsimport-option-value>true</wsimport-option-value>
+        </wsimport-option>
+        <wsimport-option>
+          <wsimport-option-name>wsdlLocation</wsimport-option-name>
+          <wsimport-option-value>http://localhost:8080/Lab3-MueblesDeLosAlpes-war/VendorWebService?wsdl</wsimport-option-value>
+        </wsimport-option>
+        <wsimport-option>
+          <wsimport-option-name>xnocompile</wsimport-option-name>
+          <wsimport-option-value>true</wsimport-option-value>
+        </wsimport-option>
+        <wsimport-option>
+          <wsimport-option-name>xendorsed</wsimport-option-name>
+          <wsimport-option-value>true</wsimport-option-value>
+        </wsimport-option>
+        <wsimport-option>
+          <wsimport-option-name>package</wsimport-option-name>
+          <wsimport-option-value>com.losalpes.vendors.ws.client</wsimport-option-value>
+        </wsimport-option>
+      </wsimport-options>
+    </client>
+  </clients>
 </jax-ws>

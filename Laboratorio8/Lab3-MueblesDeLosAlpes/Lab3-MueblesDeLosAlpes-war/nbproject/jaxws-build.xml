@@ -51,22 +51,6 @@
             <isset property="conf.dir"/>
         </condition>
     </target>
-    <target name="wsimport-client-VendorWebService" depends="wsimport-init">
-        <mkdir dir="${build.generated.dir}/jax-wsCache/VendorWebService"/>
-        <wsimport sourcedestdir="${build.generated.dir}/jax-wsCache/VendorWebService" destdir="${build.generated.dir}/jax-wsCache/VendorWebService" wsdl="${basedir}/${conf-dir}xml-resources/web-service-references/VendorWebService/wsdl/localhost_8080/Lab3-MueblesDeLosAlpes-war/VendorWebService.wsdl" catalog="catalog.xml" encoding="${source.encoding}" extension="true" verbose="true" wsdlLocation="http://localhost:8080/Lab3-MueblesDeLosAlpes-war/VendorWebService?wsdl" xnocompile="true" xendorsed="true" package="com.losalpes.vendors.ws.client">
-            <depends file="${basedir}/${conf-dir}xml-resources/web-service-references/VendorWebService/wsdl/localhost_8080/Lab3-MueblesDeLosAlpes-war/VendorWebService.wsdl"/>
-            <produces dir="${build.generated.dir}/jax-wsCache/VendorWebService"/>
-        </wsimport>
-        <copy todir="${build.generated.sources.dir}/jax-ws">
-            <fileset dir="${build.generated.dir}/jax-wsCache/VendorWebService">
-                <include name="**/*.java"/>
-            </fileset>
-        </copy>
-    </target>
-    <target name="wsimport-client-clean-VendorWebService" depends="-init-project">
-        <delete dir="${build.generated.sources.dir}/jax-ws/com/losalpes/vendors/ws/client"/>
-        <delete dir="${build.generated.dir}/jax-wsCache/VendorWebService"/>
-    </target>
     <target name="wsimport-client-MuebleWebService" depends="wsimport-init">
         <mkdir dir="${build.generated.dir}/jax-wsCache/MuebleWebService"/>
         <wsimport sourcedestdir="${build.generated.dir}/jax-wsCache/MuebleWebService" destdir="${build.generated.dir}/jax-wsCache/MuebleWebService" wsdl="${basedir}/${conf-dir}xml-resources/web-service-references/MuebleWebService/wsdl/localhost_8080/Lab3-MueblesDeLosAlpes-war/MuebleWebService.wsdl" catalog="catalog.xml" encoding="${source.encoding}" extension="true" verbose="true" wsdlLocation="http://localhost:8080/Lab3-MueblesDeLosAlpes-war/MuebleWebService?wsdl" xnocompile="true" xendorsed="true" package="com.losalpes.muebles.ws.client">
@@ -83,5 +67,21 @@
         <delete dir="${build.generated.sources.dir}/jax-ws/com/losalpes/muebles/ws/client"/>
         <delete dir="${build.generated.dir}/jax-wsCache/MuebleWebService"/>
     </target>
-    <target name="wsimport-client-generate" depends="wsimport-client-VendorWebService, wsimport-client-MuebleWebService"/>
+    <target name="wsimport-client-VendorWebService" depends="wsimport-init">
+        <mkdir dir="${build.generated.dir}/jax-wsCache/VendorWebService"/>
+        <wsimport sourcedestdir="${build.generated.dir}/jax-wsCache/VendorWebService" destdir="${build.generated.dir}/jax-wsCache/VendorWebService" wsdl="${basedir}/${conf-dir}xml-resources/web-service-references/VendorWebService/wsdl/localhost_8080/Lab3-MueblesDeLosAlpes-war/VendorWebService.wsdl" catalog="catalog.xml" encoding="${source.encoding}" extension="true" verbose="true" wsdlLocation="http://localhost:8080/Lab3-MueblesDeLosAlpes-war/VendorWebService?wsdl" xnocompile="true" xendorsed="true" package="com.losalpes.vendors.ws.client">
+            <depends file="${basedir}/${conf-dir}xml-resources/web-service-references/VendorWebService/wsdl/localhost_8080/Lab3-MueblesDeLosAlpes-war/VendorWebService.wsdl"/>
+            <produces dir="${build.generated.dir}/jax-wsCache/VendorWebService"/>
+        </wsimport>
+        <copy todir="${build.generated.sources.dir}/jax-ws">
+            <fileset dir="${build.generated.dir}/jax-wsCache/VendorWebService">
+                <include name="**/*.java"/>
+            </fileset>
+        </copy>
+    </target>
+    <target name="wsimport-client-clean-VendorWebService" depends="-init-project">
+        <delete dir="${build.generated.sources.dir}/jax-ws/com/losalpes/vendors/ws/client"/>
+        <delete dir="${build.generated.dir}/jax-wsCache/VendorWebService"/>
+    </target>
+    <target name="wsimport-client-generate" depends="wsimport-client-MuebleWebService, wsimport-client-VendorWebService"/>
 </project>
