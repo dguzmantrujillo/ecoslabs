@@ -1,0 +1,93 @@
+<?xml version='1.0' encoding='UTF-8'?><!-- Published by JAX-WS RI at http://jax-ws.dev.java.net. RI's version is Metro/2.2.0-1 (tags/2.2.0u1-7139; 2012-06-02T10:55:19+0000) JAXWS-RI/2.2.6-2 JAXWS/2.2 svn-revision#unknown. --><xs:schema xmlns:tns="http://ws.vendors.losalpes.com/" xmlns:xs="http://www.w3.org/2001/XMLSchema" version="1.0" targetNamespace="http://ws.vendors.losalpes.com/">
+
+<xs:element name="OperacionInvalidaException" type="tns:OperacionInvalidaException"/>
+
+<xs:element name="agregarVendedor" type="tns:agregarVendedor"/>
+
+<xs:element name="agregarVendedorResponse" type="tns:agregarVendedorResponse"/>
+
+<xs:element name="eliminarVendedor" type="tns:eliminarVendedor"/>
+
+<xs:element name="eliminarVendedorResponse" type="tns:eliminarVendedorResponse"/>
+
+<xs:element name="getVendedor" type="tns:getVendedor"/>
+
+<xs:element name="getVendedorResponse" type="tns:getVendedorResponse"/>
+
+<xs:element name="getVendedores" type="tns:getVendedores"/>
+
+<xs:element name="getVendedoresResponse" type="tns:getVendedoresResponse"/>
+
+<xs:element name="vendedor" type="tns:vendedor"/>
+
+<xs:complexType name="getVendedor">
+<xs:sequence>
+<xs:element name="id" type="xs:long" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="getVendedorResponse">
+<xs:sequence>
+<xs:element name="return" type="tns:vendedor" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="vendedor">
+<xs:sequence>
+<xs:element name="apellidos" type="xs:string" minOccurs="0"/>
+<xs:element name="comisionVentas" type="xs:double"/>
+<xs:element name="experiencia" type="tns:experienciaVendedor" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+<xs:element name="foto" type="xs:string" minOccurs="0"/>
+<xs:element name="identificacion" type="xs:long"/>
+<xs:element name="nombres" type="xs:string" minOccurs="0"/>
+<xs:element name="perfil" type="xs:string" minOccurs="0"/>
+<xs:element name="salario" type="xs:double"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="experienciaVendedor">
+<xs:sequence>
+<xs:element name="ano" type="xs:int"/>
+<xs:element name="cargo" type="xs:string" minOccurs="0"/>
+<xs:element name="descripcion" type="xs:string" minOccurs="0"/>
+<xs:element name="id" type="xs:long"/>
+<xs:element name="nombreEmpesa" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="eliminarVendedor">
+<xs:sequence>
+<xs:element name="id" type="xs:long"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="eliminarVendedorResponse">
+<xs:sequence/>
+</xs:complexType>
+
+<xs:complexType name="OperacionInvalidaException">
+<xs:sequence>
+<xs:element name="message" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="agregarVendedor">
+<xs:sequence>
+<xs:element ref="tns:vendedor" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="agregarVendedorResponse">
+<xs:sequence/>
+</xs:complexType>
+
+<xs:complexType name="getVendedores">
+<xs:sequence/>
+</xs:complexType>
+
+<xs:complexType name="getVendedoresResponse">
+<xs:sequence>
+<xs:element name="return" type="tns:vendedor" minOccurs="0" maxOccurs="unbounded"/>
+</xs:sequence>
+</xs:complexType>
+</xs:schema>

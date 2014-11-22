@@ -27,9 +27,61 @@
             <classpath path="${java.home}/../lib/tools.jar:${build.classes.dir}:${j2ee.platform.wsgen.classpath}:${javac.classpath}"/>
         </wsgen>
     </target>
+    <target name="wsgen-MuebleWebService" depends="wsgen-init">
+        <copy todir="${build.classes.dir}/META-INF">
+            <fileset dir="${webinf.dir}" includes="wsit-com.losalpes.muebles.ws.MuebleWebService.xml"/>
+        </copy>
+        <wsgen sourcedestdir="${build.generated.sources.dir}/jax-ws" resourcedestdir="${build.generated.sources.dir}/jax-ws/resources/" destdir="${build.generated.sources.dir}/jax-ws" verbose="true" keep="true" genwsdl="true" sei="com.losalpes.muebles.ws.MuebleWebService" xendorsed="true">
+            <classpath path="${java.home}/../lib/tools.jar:${build.classes.dir}:${j2ee.platform.wsgen.classpath}:${javac.classpath}"/>
+        </wsgen>
+    </target>
     <!--
                 ===================
                 JAX-WS WSIMPORT SECTION
                 ===================
             -->
+    <target name="wsimport-init" depends="init">
+        <fail if="${wsimport.bad.version}" message="WsImport ant task defined in the classpath ${j2ee.platform.wsimport.classpath} has a serious bug. See http://wiki.netbeans.org/MetroIssue for details."/>
+        <mkdir dir="${build.generated.sources.dir}/jax-ws"/>
+        <property name="j2ee.platform.wsimport.classpath" value="${libs.jaxws21.classpath}"/>
+        <taskdef name="wsimport" classname="com.sun.tools.ws.ant.WsImport">
+            <classpath path="${java.home}/../lib/tools.jar:${j2ee.platform.wsimport.classpath}:${javac.classpath}"/>
+        </taskdef>
+        <condition property="conf-dir" value="${conf.dir}/" else="">
+            <isset property="conf.dir"/>
+        </condition>
+    </target>
+    <target name="wsimport-client-VendorWebService" depends="wsimport-init">
+        <mkdir dir="${build.generated.dir}/jax-wsCache/VendorWebService"/>
+        <wsimport sourcedestdir="${build.generated.dir}/jax-wsCache/VendorWebService" destdir="${build.generated.dir}/jax-wsCache/VendorWebService" wsdl="${basedir}/${conf-dir}xml-resources/web-service-references/VendorWebService/wsdl/localhost_8080/Lab3-MueblesDeLosAlpes-war/VendorWebService.wsdl" catalog="catalog.xml" encoding="${source.encoding}" extension="true" verbose="true" wsdlLocation="http://localhost:8080/Lab3-MueblesDeLosAlpes-war/VendorWebService?wsdl" xnocompile="true" xendorsed="true" package="com.losalpes.vendors.ws.client">
+            <depends file="${basedir}/${conf-dir}xml-resources/web-service-references/VendorWebService/wsdl/localhost_8080/Lab3-MueblesDeLosAlpes-war/VendorWebService.wsdl"/>
+            <produces dir="${build.generated.dir}/jax-wsCache/VendorWebService"/>
+        </wsimport>
+        <copy todir="${build.generated.sources.dir}/jax-ws">
+            <fileset dir="${build.generated.dir}/jax-wsCache/VendorWebService">
+                <include name="**/*.java"/>
+            </fileset>
+        </copy>
+    </target>
+    <target name="wsimport-client-clean-VendorWebService" depends="-init-project">
+        <delete dir="${build.generated.sources.dir}/jax-ws/com/losalpes/vendors/ws/client"/>
+        <delete dir="${build.generated.dir}/jax-wsCache/VendorWebService"/>
+    </target>
+    <target name="wsimport-client-MuebleWebService" depends="wsimport-init">
+        <mkdir dir="${build.generated.dir}/jax-wsCache/MuebleWebService"/>
+        <wsimport sourcedestdir="${build.generated.dir}/jax-wsCache/MuebleWebService" destdir="${build.generated.dir}/jax-wsCache/MuebleWebService" wsdl="${basedir}/${conf-dir}xml-resources/web-service-references/MuebleWebService/wsdl/localhost_8080/Lab3-MueblesDeLosAlpes-war/MuebleWebService.wsdl" catalog="catalog.xml" encoding="${source.encoding}" extension="true" verbose="true" wsdlLocation="http://localhost:8080/Lab3-MueblesDeLosAlpes-war/MuebleWebService?wsdl" xnocompile="true" xendorsed="true" package="com.losalpes.muebles.ws.client">
+            <depends file="${basedir}/${conf-dir}xml-resources/web-service-references/MuebleWebService/wsdl/localhost_8080/Lab3-MueblesDeLosAlpes-war/MuebleWebService.wsdl"/>
+            <produces dir="${build.generated.dir}/jax-wsCache/MuebleWebService"/>
+        </wsimport>
+        <copy todir="${build.generated.sources.dir}/jax-ws">
+            <fileset dir="${build.generated.dir}/jax-wsCache/MuebleWebService">
+                <include name="**/*.java"/>
+            </fileset>
+        </copy>
+    </target>
+    <target name="wsimport-client-clean-MuebleWebService" depends="-init-project">
+        <delete dir="${build.generated.sources.dir}/jax-ws/com/losalpes/muebles/ws/client"/>
+        <delete dir="${build.generated.dir}/jax-wsCache/MuebleWebService"/>
+    </target>
+    <target name="wsimport-client-generate" depends="wsimport-client-VendorWebService, wsimport-client-MuebleWebService"/>
 </project>
