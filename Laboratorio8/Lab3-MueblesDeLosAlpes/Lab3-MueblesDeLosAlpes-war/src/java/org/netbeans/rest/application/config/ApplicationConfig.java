@@ -38,6 +38,7 @@ public class ApplicationConfig extends Application {
      */
     private void addRestResourceClasses(Set<Class<?>> resources) {
        resources.add(com.losalpes.ws.rs.VendedorResource.class);
+       resources.add(com.losalpes.ws.rs.ClienteResource.class);
     }
 
     /**
@@ -45,6 +46,7 @@ public class ApplicationConfig extends Application {
      */
     private Set<Class<?>> getRestResourceClasses() {
         Set<Class<?>> resources = new java.util.HashSet<Class<?>>();
+        resources.add(com.losalpes.ws.rs.ClienteResource.class);
         resources.add(com.losalpes.ws.rs.VendedorResource.class);
         // following code can be used to customize Jersey 1.x JSON provider:
         try {

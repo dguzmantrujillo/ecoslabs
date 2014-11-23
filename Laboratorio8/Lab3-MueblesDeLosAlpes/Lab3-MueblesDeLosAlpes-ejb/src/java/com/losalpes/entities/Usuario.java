@@ -13,11 +13,13 @@
 package com.losalpes.entities;
 
 import java.util.ArrayList;
+import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  * Clase que representa un usuario del sistema
  * @author Juan Sebastián Urrego
  */
+@XmlRootElement
 public class Usuario
 {
 
