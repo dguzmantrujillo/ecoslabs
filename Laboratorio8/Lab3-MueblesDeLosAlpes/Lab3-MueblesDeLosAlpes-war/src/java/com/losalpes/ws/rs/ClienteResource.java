@@ -35,17 +35,21 @@ public class ClienteResource {
     private IServicioRegistroMockLocal ejbRef;
 
     @POST
-    public void agregarCliente(Usuario usuario) throws OperacionInvalidaException {
+    public void agregarCliente(Usuario usuario) throws
+            OperacionInvalidaException {
         ejbRef.registrar(usuario);
     }
-    
+
     @PUT
-    public void actualizarCliente(Usuario usuario) throws OperacionInvalidaException {
+    public void actualizarCliente(Usuario usuario) throws
+            OperacionInvalidaException {
         ejbRef.actualizar(usuario);
     }
 
     @DELETE
-    public void eliminarCliente(@PathParam("id") String login) throws OperacionInvalidaException {
+    @Path("/{id}")
+    public void eliminarCliente(@PathParam("id") String login) throws
+            OperacionInvalidaException {
         ejbRef.eliminarCliente(login);
     }
 

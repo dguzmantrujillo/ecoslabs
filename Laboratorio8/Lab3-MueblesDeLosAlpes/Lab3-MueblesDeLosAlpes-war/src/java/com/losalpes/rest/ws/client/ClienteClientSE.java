@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.losalpes.rest.ws.client;
 
 import com.google.gson.Gson;
@@ -95,9 +90,6 @@ public class ClienteClientSE {
 
         //cierra la conexi&oacute;n a la URL
         connection.disconnect();
-
         return clientes;
-
     }
-
 }

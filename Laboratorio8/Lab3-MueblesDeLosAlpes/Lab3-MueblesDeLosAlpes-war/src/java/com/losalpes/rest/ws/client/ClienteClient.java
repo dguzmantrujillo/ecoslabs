@@ -41,8 +41,11 @@ public class ClienteClient {
 
     public Usuario getCliente(String login) throws UniformInterfaceException {
         WebResource resource = webResource;
-        resource = resource.path(java.text.MessageFormat.format("{0}", new Object[]{login}));
-        return resource.get(Usuario.class);
+        resource = resource.path(java.text.MessageFormat.format("{0}",
+                new Object[]{login}));
+        return resource.accept(MediaType.APPLICATION_XML).get(
+                new GenericType<Usuario>() {
+                });
     }
 
     public List<Usuario> getClientes() throws UniformInterfaceException {
@@ -53,20 +56,21 @@ public class ClienteClient {
                 });
     }
 
-    public void agregarCliente() throws UniformInterfaceException {
-        webResource.post();
+    public void agregarCliente(Usuario cliente) throws UniformInterfaceException {
+        webResource.entity(cliente, MediaType.APPLICATION_XML).post();
     }
 
-    public void actualizarCliente() throws UniformInterfaceException {
-        webResource.put();
+    public void actualizarCliente(Usuario cliente) throws
+            UniformInterfaceException {
+        webResource.entity(cliente, MediaType.APPLICATION_XML).put();
     }
 
     public void eliminarCliente(String login) throws UniformInterfaceException {
-        webResource.delete();
+        webResource.path(java.text.MessageFormat.format("{0}", new Object[]{
+            login})).delete();
     }
 
     public void close() {
         client.destroy();
     }
-
 }
